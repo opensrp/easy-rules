@@ -17,20 +17,20 @@
     </properties>
 
     <scm>
-        <url>git@github.com:j-easy/easy-rules.git</url>
-        <connection>scm:git:git@github.com:j-easy/easy-rules.git</connection>
-        <developerConnection>scm:git:git@github.com:j-easy/easy-rules.git</developerConnection>
+        <url>git@github.com:opensrp/easy-rules.git</url>
+        <connection>scm:git:git@github.com:opensrp/easy-rules.git</connection>
+        <developerConnection>scm:git:git@github.com:opensrp/easy-rules.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/j-easy/easy-rules/issues</url>
+        <url>https://github.com/opensrp/easy-rules/issues</url>
     </issueManagement>
 
     <ciManagement>
         <system>Github Actions</system>
-        <url>https://github.com/j-easy/easy-rules/actions</url>
+        <url>https://github.com/opensrp/easy-rules/actions</url>
     </ciManagement>
 
     <developers>
