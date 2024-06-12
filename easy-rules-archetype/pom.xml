@@ -2,14 +2,14 @@
     <parent>
         <groupId>org.jeasy</groupId>
         <artifactId>easy-rules</artifactId>
-        <version>4.1.1-SNAPSHOT</version>
+        <version>4.1.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>easy-rules-archetype</artifactId>
     <name>Easy Rules Quick Start Archetype</name>
     <description>Maven archetype to create a skeleton project</description>
-    <url>http://www.github.com/j-easy/easy-rules</url>
+    <url>http://github.com/opensrp/easy-rules</url>
 
     <developers>
         <developer>
