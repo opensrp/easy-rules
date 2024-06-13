@@ -8,7 +8,7 @@
 <div align="center">
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/j-easy/easy-rules/workflows/Java%20CI/badge.svg)](https://github.com/j-easy/easy-rules/actions)
+[![Build Status](https://github.com/opensrp/easy-rules/workflows/Java%20CI/badge.svg)](https://github.com/opensrp/easy-rules/actions)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.jeasy/easy-rules-core/badge.svg?style=flat)](http://search.maven.org/#artifactdetails|org.jeasy|easy-rules-core|4.1.0|)
 [![Javadoc](https://www.javadoc.io/badge/org.jeasy/easy-rules-core.svg)](http://www.javadoc.io/doc/org.jeasy/easy-rules-core)
 [![Project status](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)
@@ -24,7 +24,7 @@ Version 4.1.x is the only supported version. Please consider upgrading to this v
 
 ## Latest news
 
-* 06/12/2020: Version 4.1 is out with a new module to support [Apache JEXL](https://commons.apache.org/proper/commons-jexl/) as an additional supported expression language! You can find all details about other changes in the [release notes](https://github.com/j-easy/easy-rules/releases).
+* 06/12/2020: Version 4.1 is out with a new module to support [Apache JEXL](https://commons.apache.org/proper/commons-jexl/) as an additional supported expression language! You can find all details about other changes in the [release notes](https://github.com/opensrp/easy-rules/releases).
 
 ## What is Easy Rules?
 
@@ -123,15 +123,15 @@ public class Test {
 }
 ```
 
-This is the hello world of Easy Rules. You can find other examples like the [Shop](https://github.com/j-easy/easy-rules/wiki/shop), [Airco](https://github.com/j-easy/easy-rules/wiki/air-conditioning) or [WebApp](https://github.com/j-easy/easy-rules/wiki/web-app) tutorials in the wiki.
+This is the hello world of Easy Rules. You can find other examples like the [Shop](https://github.com/opensrp/easy-rules/wiki/shop), [Airco](https://github.com/opensrp/easy-rules/wiki/air-conditioning) or [WebApp](https://github.com/opensrp/easy-rules/wiki/web-app) tutorials in the wiki.
 
 ## Contribution
 
 You are welcome to contribute to the project with pull requests on GitHub.
-Please note that Easy Rules is in [maintenance mode](https://github.com/j-easy/easy-rules#project-status),
+Please note that Easy Rules is in [maintenance mode](https://github.com/opensrp/easy-rules#project-status),
 which means only pull requests for bug fixes will be considered.
 
-If you believe you found a bug or have any question, please use the [issue tracker](https://github.com/j-easy/easy-rules/issues).
+If you believe you found a bug or have any question, please use the [issue tracker](https://github.com/opensrp/easy-rules/issues).
 
 ## Awesome contributors
 

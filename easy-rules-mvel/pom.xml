@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.jeasy</groupId>
+      <groupId>org.smartregister</groupId>
         <artifactId>easy-rules</artifactId>
         <version>4.1.1-SNAPSHOT</version>
     </parent>
@@ -13,24 +13,24 @@
     <description>MVEL integration module</description>
 
     <properties>
-        <mvel2.version>2.4.10.Final</mvel2.version>
+        <mvel2.version>2.5.2.Final</mvel2.version>
     </properties>
 
     <scm>
-        <url>git@github.com:j-easy/easy-rules.git</url>
-        <connection>scm:git:git@github.com:j-easy/easy-rules.git</connection>
-        <developerConnection>scm:git:git@github.com:j-easy/easy-rules.git</developerConnection>
+        <url>git@github.com:opensrp/easy-rules.git</url>
+        <connection>scm:git:git@github.com:opensrp/easy-rules.git</connection>
+        <developerConnection>scm:git:git@github.com:opensrp/easy-rules.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/j-easy/easy-rules/issues</url>
+        <url>https://github.com/opensrp/easy-rules/issues</url>
     </issueManagement>
 
     <ciManagement>
         <system>Github Actions</system>
-        <url>https://github.com/j-easy/easy-rules/actions</url>
+        <url>https://github.com/opensrp/easy-rules/actions</url>
     </ciManagement>
 
     <developers>
@@ -55,7 +55,7 @@
     <dependencies>
         <!-- production dependencies -->
         <dependency>
-            <groupId>org.jeasy</groupId>
+          <groupId>org.smartregister</groupId>
             <artifactId>easy-rules-support</artifactId>
             <version>${project.version}</version>
         </dependency>
