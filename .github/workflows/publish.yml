@@ -80,12 +80,12 @@ jobs:
           mvn -B -ntp versions:commit
 
       - name: Build & Test (signs at verify)
-        run: mvn -B -ntp clean verify
+        run: mvn -B -ntp clean verify -P release
         env:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Deploy to Maven Central
-        run: mvn -B -ntp deploy -DskipTests
+        run: mvn -B -ntp deploy -DskipTests -P release
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
