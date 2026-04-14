@@ -2,12 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
-
   <groupId>org.smartregister</groupId>
     <artifactId>easy-rules</artifactId>
     <version>4.1.1-SNAPSHOT</version>
@@ -46,6 +40,18 @@
         <maven-license-plugin.version>4.5</maven-license-plugin.version>
         <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
     </properties>
+
+<!--    <distributionManagement>
+        &lt;!&ndash; Overrides oss-parent:7 — targets Sonatype Central Portal with server ID matching settings.xml &ndash;&gt;
+        <snapshotRepository>
+            <id>central</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <url>https://central.sonatype.com/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>-->
 
     <scm>
         <url>git@github.com:opensrp/easy-rules.git</url>

@@ -84,7 +84,7 @@ jobs:
         env:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
-      - name: Deploy to Sonatype OSSRH
+      - name: Deploy to Maven Central
         run: mvn -B -ntp deploy -DskipTests -P release
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
