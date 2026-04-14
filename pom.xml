@@ -267,8 +267,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <!-- Passphrase comes from env var set in the workflow -->
-                            <passphrase>${env.GPG_PASSPHRASE}</passphrase>
+                            <!-- Passphrase read automatically from MAVEN_GPG_PASSPHRASE env var -->
                             <gpgArguments>
                                 <arg>--pinentry-mode</arg>
                                 <arg>loopback</arg>

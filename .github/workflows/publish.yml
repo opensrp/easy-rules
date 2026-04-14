@@ -54,16 +54,11 @@ jobs:
                 <username>__CENTRAL_USERNAME__</username>
                 <password>__CENTRAL_PASSWORD__</password>
               </server>
-              <server>
-                <id>gpg.passphrase</id>
-                <passphrase>__GPG_PASSPHRASE__</passphrase>
-              </server>
             </servers>
           </settings>
           XML
           sed -i "s#__CENTRAL_USERNAME__#${{ secrets.CENTRAL_USERNAME }}#g" "$HOME/.m2/settings.xml"
-          sed -i "s#__CENTRAL_PASSWORD__#${{ secrets.CENTRAL_PASSWORD }}#g"       "$HOME/.m2/settings.xml"
-          sed -i "s#__GPG_PASSPHRASE__#${{ secrets.GPG_PASSPHRASE }}#g" "$HOME/.m2/settings.xml"
+          sed -i "s#__CENTRAL_PASSWORD__#${{ secrets.CENTRAL_PASSWORD }}#g"  "$HOME/.m2/settings.xml"
 
       - name: Extract version from tag
         id: version
@@ -74,22 +69,25 @@ jobs:
         run: |
           if [[ "${GITHUB_REF}" == *"-SNAPSHOT" ]]; then
             echo "TYPE=snapshot" >> "$GITHUB_OUTPUT"
-          else
+          elif [[ "${GITHUB_REF}" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "TYPE=production" >> "$GITHUB_OUTPUT"
+          else
+            echo "ERROR: unexpected tag format '${GITHUB_REF}'. Expected vX.Y.Z or vX.Y.Z-SNAPSHOT." >&2
+            exit 1
           fi
 
       - name: Set project version from tag
         run: |
-          mvn -B -ntp versions:set -DnewVersion="${{ steps.version.outputs.VERSION }}"
+          mvn -B -ntp versions:set -DnewVersion="${{ steps.version.outputs.VERSION }}" -DprocessAllModules=true
           mvn -B -ntp versions:commit
 
       - name: Build & Test (signs at verify)
-        run: mvn -B -ntp clean verify
+        run: mvn -B -ntp clean verify -P release
         env:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Deploy to Sonatype OSSRH
-        run: mvn -B -ntp deploy -DskipTests
+        run: mvn -B -ntp deploy -DskipTests -P release
         env:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
