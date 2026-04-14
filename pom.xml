@@ -37,21 +37,10 @@
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven.source.plugin.version>3.3.1</maven.source.plugin.version>
         <maven.gpg.plugin.version>3.2.7</maven.gpg.plugin.version>
+        <central.publishing.plugin.version>0.7.0</central.publishing.plugin.version>
         <maven-license-plugin.version>4.5</maven-license-plugin.version>
         <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
     </properties>
-
-<!--    <distributionManagement>
-        &lt;!&ndash; Overrides oss-parent:7 — targets Sonatype Central Portal with server ID matching settings.xml &ndash;&gt;
-        <snapshotRepository>
-            <id>central</id>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>central</id>
-            <url>https://central.sonatype.com/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>-->
 
     <scm>
         <url>git@github.com:opensrp/easy-rules.git</url>
@@ -257,6 +246,17 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${central.publishing.plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                        </configuration>
                     </plugin>
                     <!-- Sign EVERYTHING at verify so .asc exist before deploy -->
                     <plugin>
