@@ -146,8 +146,8 @@ git tag v4.1.2-SNAPSHOT && git push origin v4.1.2-SNAPSHOT
 
 The workflow (`publish.yml`) will:
 1. Set the project version from the tag (strips the `v` prefix)
-2. Run `mvn clean verify` — compiles, tests, and GPG-signs all artifacts
-3. Run `mvn deploy` — uploads to Sonatype OSSRH (releases are promoted to Maven Central)
+2. Run `mvn clean verify` — compiles and tests the project
+3. Run `mvn deploy` — uploads artifacts to Sonatype OSSRH (with release promotion/asset signing handled by the workflow's Maven configuration)
 4. Create a GitHub Release automatically
 
 ### Required repository secrets
