@@ -51,14 +51,12 @@ jobs:
             <servers>
               <server>
                 <id>central</id>
-                <username>__CENTRAL_USERNAME__</username>
-                <password>__CENTRAL_PASSWORD__</password>
+                <username>${env.CENTRAL_USERNAME}</username>
+                <password>${env.CENTRAL_PASSWORD}</password>
               </server>
             </servers>
           </settings>
           XML
-          sed -i "s#__CENTRAL_USERNAME__#${{ secrets.CENTRAL_USERNAME }}#g" "$HOME/.m2/settings.xml"
-          sed -i "s#__CENTRAL_PASSWORD__#${{ secrets.CENTRAL_PASSWORD }}#g"  "$HOME/.m2/settings.xml"
 
       - name: Extract version from tag
         id: version
@@ -89,6 +87,8 @@ jobs:
       - name: Deploy to Sonatype OSSRH
         run: mvn -B -ntp deploy -DskipTests -P release
         env:
+          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+          CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Create GitHub Release
@@ -96,7 +96,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           draft: false
-          prerelease: ${{ steps.reltype.outputs.TYPE == 'snapshot' || contains(github.ref, 'RC') || contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
+          prerelease: ${{ steps.reltype.outputs.TYPE == 'snapshot' }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
