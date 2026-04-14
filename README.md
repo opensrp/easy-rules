@@ -125,6 +125,42 @@ public class Test {
 
 This is the hello world of Easy Rules. You can find other examples like the [Shop](https://github.com/opensrp/easy-rules/wiki/shop), [Airco](https://github.com/opensrp/easy-rules/wiki/air-conditioning) or [WebApp](https://github.com/opensrp/easy-rules/wiki/web-app) tutorials in the wiki.
 
+## Publishing
+
+Artifacts are published to [Maven Central](https://central.sonatype.com/) automatically when a tag is pushed to the repository.
+
+### Tag conventions
+
+| Type | Pattern | Example | Behaviour |
+|------|---------|---------|-----------|
+| Release | `v<major>.<minor>.<patch>` | `v4.1.1` | Published to Maven Central; GitHub Release created |
+| Snapshot | `v<major>.<minor>.<patch>-SNAPSHOT` | `v4.1.2-SNAPSHOT` | Published to the snapshots repository; GitHub Release marked as pre-release |
+
+```bash
+# cut a release
+git tag v4.1.1 && git push origin v4.1.1
+
+# cut a snapshot
+git tag v4.1.2-SNAPSHOT && git push origin v4.1.2-SNAPSHOT
+```
+
+The workflow (`publish.yml`) will:
+1. Set the project version from the tag (strips the `v` prefix)
+2. Run `mvn clean verify` — compiles and tests the project
+3. Run `mvn deploy` — uploads artifacts to Sonatype OSSRH (with release promotion/asset signing handled by the workflow's Maven configuration)
+4. Create a GitHub Release automatically
+
+### Required repository secrets
+
+The following secrets must be configured in **Settings → Secrets and variables → Actions**:
+
+| Secret | Description |
+|--------|-------------|
+| `CENTRAL_USERNAME` | Sonatype Central portal username |
+| `CENTRAL_PASSWORD` | Sonatype Central portal token |
+| `GPG_PRIVATE_KEY` | Armored GPG private key (`gpg --armor --export-secret-keys <KEY_ID>`) |
+| `GPG_PASSPHRASE` | Passphrase for the GPG key |
+
 ## Contribution
 
 You are welcome to contribute to the project with pull requests on GitHub.
